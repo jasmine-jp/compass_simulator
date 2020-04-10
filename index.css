@@ -1,0 +1,84 @@
+body {
+  width: 500px; height: 300px;
+  background: url(img/back.png) no-repeat; 
+}
+
+h1 {
+  font-size: 43px;
+  position: relative; bottom: 22px; left: 40px;
+}
+
+h2 {
+  font-size: 33px;
+  position: relative; bottom: 45px; left: 725px;
+}
+
+#img1 {
+  width: 650px;
+  position: absolute; top: 125px; left: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  position: absolute; top: 129px; left: 725px;
+  background: rgb(215, 234, 252);
+}
+
+td {
+  width: 150px; height: 43px;
+  border: solid 1px;
+  font-size: 25px;
+}
+
+#selectArea {
+  width: 330px; height: 30px;
+  font-size: 18px;
+  position: absolute; top: 85px; left: 50px;
+}
+
+#selectShip {
+  width: 188px; height: 47px;
+  font-size: 23px;
+  position: relative; bottom: 73px; left: 950px;
+  background: rgb(215, 234, 252);
+}
+
+#button1 {
+  width: 245px; height: 100px;
+  color: rgb(5, 76, 206); font-size: 28px; text-align: left;
+  position: relative; bottom: 40px; left: 945px;
+  background: url(img/fairy.gif) no-repeat right; border: solid 2px rgb(5, 76, 206);
+}
+
+#button1:hover {
+  color: yellow; border: solid 5px yellow;
+}
+
+#button2 {
+  width: 100px; height: 50px;
+  font-size: 25px;
+  position: absolute; bottom: 50px; left: 750px;
+}
+
+p {
+  width: 625px;
+  font-size: 30px;
+  position: relative; bottom: 150px; left: 50px;
+}
+
+div {
+  width: 700px;
+  font-size: 25px;
+  position: relative; bottom: 175px; left: 50px;
+}
+
+#activeSelect {
+  width: 150px; height: 75px;
+  font-size: 25px;
+  position: absolute; bottom: 110px; left: 725px;
+}
+
+a {
+  font-size: 20px;
+  position: absolute; top: 25px; left: 1100px;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>羅針盤シミュレータ</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="js/lib.js"></script>
+  <script src="js/push.js"></script>
+  <script src="js/way.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>羅針盤シミュレータ</h1>
+  <h2>推奨編成</h2>
+  <form id="form">
+    <select id="selectArea" onchange="changeArea()">
+      <optgroup label="鎮守府海域">
+        <option value="1-1" selected>1-1.鎮守府正面海域</option>
+        <option value="1-2">1-2.南西諸島沖</option>
+        <option value="1-3">1-3.製油所地帯沿岸</option>
+        <option value="1-4">1-4.南西諸島防衛線</option>
+        <option value="1-5">1-5.鎮守府近海</option>
+        <option value="1-6">1-6.鎮守府近海航路</option>
+      </optgroup>
+      <optgroup label="南西諸島海域">
+        <option value="2-1">2-1.南西諸島近海</option>
+        <option value="2-2">2-2.バシー海峡</option>
+        <option value="2-3">2-3.東部オリョール海</option>
+        <option value="2-4">2-4.沖ノ島海域</option>
+        <option value="2-5">2-5.沖ノ島沖</option>
+      </optgroup>
+      <optgroup label="北方海域">
+        <option value="3-1">3-1.モーレイ海</option>
+        <option value="3-2">3-2.キス島沖</option>
+        <option value="3-3">3-3.アルフォンシーノ方面</option>
+        <option value="3-4">3-4.北方海域全域</option>
+        <option value="3-5">3-5.北方AL海域</option>
+      </optgroup>
+      <optgroup label="南西海域">
+        <option value="7-1">7-1.ブルネイ泊地沖</option>
+        <option value="7-2">7-2.タウイタウイ泊地沖</option>
+      </optgroup>
+      <optgroup label="西方海域">
+        <option value="4-1">4-1.ジャム島沖</option>
+        <option value="4-2">4-2.カレー洋海域</option>
+        <option value="4-3">4-3.リランカ島</option>
+        <option value="4-4">4-4.カスガダマ島</option>
+        <option value="4-5">4-5.カレー洋リランカ島沖</option>
+      </optgroup>
+      <optgroup label="南方海域">
+        <option value="5-1">5-1.南方海域前面</option>
+        <option value="5-2">5-2.珊瑚諸島沖</option>
+        <option value="5-3">5-3.サブ島沖海域</option>
+        <option value="5-4">5-4.サーモン海域</option>
+        <option value="5-5">5-5.サーモン海域北方</option>
+      </optgroup>
+      <optgroup label="中部海域">
+        <option value="6-1">6-1.中部海域哨戒線</option>
+        <option value="6-2">6-2.MS諸島沖</option>
+        <option value="6-3">6-3.グアノ環礁沖海域</option>
+        <option value="6-4">6-4.中部北海域ピーコック島沖</option>
+        <option value="6-5">6-5.KW環礁沖海域</option>
+      </optgroup>
+    </select>
+    <img src="img/1-1.png" id="img1">
+    <table>
+      <tbody>
+        <tr>
+          <td id="fleet1">
+            駆逐艦
+          </td>
+        </tr>
+        <tr>
+          <td id="fleet2">
+            駆逐艦
+          </td>
+        </tr>
+        <tr>
+          <td id="fleet3">
+            駆逐艦
+          </td>
+        </tr>
+        <tr>
+          <td id="fleet4">
+            駆逐艦
+          </td>
+        </tr>
+        <tr>
+          <td id="fleet5">
+            なし
+          </td>
+        </tr>
+        <tr>
+          <td id="fleet6">
+            なし
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <form id="form1">
+    <select id="selectShip" onchange="pushDisSp()">
+      <option value="0">なし</option>
+      <option value="Bb">戦艦</option>
+      <option value="Cv">正規空母</option>
+      <option value="Cvl">軽空母</option>
+      <option value="Ca">重巡洋艦</option>
+      <option value="Cl">軽巡洋艦</option>
+      <option value="Dd">駆逐艦</option>
+      <option value="De">海防艦</option>
+      <option value="Ss">潜水艦</option>
+      <option value="Av">水上機母艦</option>
+      <option value="Ao">補給艦</option>
+      <option value="Sp1">秋津洲</option>
+      <option value="Sp2">大鯨</option>
+    </select>
+  </form>
+  <form id="form2"></form>
+  <form id="form3"></form>
+  <form id="form4"></form>
+  <form id="form5"></form>
+  <form id="form6"></form>
+  <form id="form7">
+    <select id="activeSelect" hidden>
+      <option value="">能動分岐</option>
+      <option value="1st"></option>
+      <option value="2nd"></option>
+    </select>
+  </form>
+  <button id="button1" onclick="pushWay()">シミュレート</button>
+  <button id="button2" onclick="pushWay()" hidden>決定</button>
+  
+  <p>シミュレートボタンを押してください</p>
+  <div>※航巡、雷巡は重巡としています</div>
+  <a href="https://twitter.com/yabuchihi1129">お問い合わせ</a>
+</body>
+</html>
